@@ -1,0 +1,38 @@
+body {
+
+}
+div#contents {
+
+}
+
+div#card {
+    background-color: #ffffcc;
+    height: 500px;
+    width: 375px;
+    box-shadow: 10px 10px 5px #888888;
+    text-align: center;
+    border: 25px solid lightgray;
+}
+
+#handmade-paper {
+    height: 100px;
+    background: darkgray url("handmade-paper/swirl_silver.jpg") center no-repeat;
+}
+
+#ribbon {
+    height: 75px;
+    background-color: gray;
+}
+
+div#text {
+    /* padding: 10px; */
+}
+
+table {
+    margin: auto;
+    width: 350px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
