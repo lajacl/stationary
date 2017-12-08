@@ -24,7 +24,7 @@ div#card {
     background-color: gray;
 }
 
-div#text {
+div#content {
     /* padding: 10px; */
 }
 
@@ -36,6 +36,29 @@ table {
 h1, h2, h3 {
     margin: 0;
 }
+
+/* Stationary Sections */
+
+#header {
+    font-family: mfWeddingBells;
+}
+
+#names {
+    font-family: mfWeddingBells;
+}
+
+text_main {
+
+}
+
+#date {
+
+}
+
+#footer {
+
+}
+
 
 /* Font Declarations */
 @font-face {
