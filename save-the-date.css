@@ -36,3 +36,60 @@ table {
 h1, h2, h3 {
     margin: 0;
 }
+
+/* Font Declarations */
+@font-face {
+    font-family: anisha;
+    src: url(fonts/anisha.otf);
+}
+
+@font-face {
+    font-family: behindScript;
+    src: url(fonts/behind_script.otf);
+}
+
+@font-face {
+    font-family: bolina;
+    src: url(fonts/bolina.otf);
+}
+
+@font-face {
+    font-family: freebooter;
+    src: url(fonts/freebooter.ttf);
+}
+
+@font-face {
+    font-family: hugsAndKisses;
+    src: url(fonts/hugs_and_kisses.ttf);
+}
+
+@font-face {
+    font-family: mfWeddingBells;
+    src: url(fonts/mf_wedding_bells.ttf);
+}
+
+@font-face {
+    font-family: mirellaScript;
+    src: url(fonts/mirella_script.ttf);
+}
+
+@font-face {
+    font-family: qaskinBlack;
+    src: url(fonts/qaskin_black.ttf);
+}
+
+@font-face {
+    font-family: respective;
+    src: url(fonts/respective.ttf);
+}
+
+@font-face {
+    font-family: theHeartOfEverything;
+    src: url(fonts/the_heart_of_everything.ttf);
+}
+
+@font-face {
+    font-family: youreInvitedHeavy;
+    src: url(fonts/youre_invited_heavy.ttf);
+}
+
