@@ -14,9 +14,9 @@ div#card {
     border: 25px solid lightgray;
 }
 
-#handmade-paper {
+#accent-paper {
     height: 100px;
-    background: darkgray url("handmade-paper/swirl_silver.jpg") center no-repeat;
+    background: darkgray url("accent-paper/swirl_silver.jpg") center no-repeat;
 }
 
 #ribbon {
@@ -38,6 +38,10 @@ h1, h2, h3 {
 }
 
 /* Stationary Sections */
+#page-title {
+    text-align: center;
+    font-variant-caps: small-caps;
+}
 
 #selectors {
     padding-top: 20px;

@@ -2,7 +2,8 @@
 <html>
 
     <head>
-        <title>Stationary Viewer</title>
+        <meta charset="UTF-8">
+        <title>Stationary Designer</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="save-the-date.css">
         <script src="save-the-date.js"></script>
@@ -10,15 +11,46 @@
 
     <body>
 
+        <h2 id="page-title">
+            Stationary Creator
+        </h2>
+
         <div id="selectors">
-            <p>Choose your font: </p>
-            <select id="select-font">
-            </select>
+
+            <table>
+                <tr>
+                    <td>                            
+                        Select your fancy font:<br />
+                        <select id="select-font">
+                        </select>
+                    </td>
+                    
+                    <td>
+                        <button id="font-inc">
+                            font +
+                        </button><br /><br />
+
+                        <button id="font-dec">
+                            font -
+                        </button>
+
+                    </td>
+
+                    <td>
+                        Select your accent paper:<br />
+                        <select id="select-paper">
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            
+
         </div>
         
         <div id="card">
 
-            <div id="handmade-paper"></div>
+            <div id="accent-paper"></div>
             <div id="ribbon"></div>
             <div id="content">
             <h1 id="header">
