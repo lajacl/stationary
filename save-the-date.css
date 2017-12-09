@@ -39,6 +39,11 @@ h1, h2, h3 {
 
 /* Stationary Sections */
 
+#selectors {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 #header {
     font-family: mfWeddingBells;
 }
@@ -47,7 +52,7 @@ h1, h2, h3 {
     font-family: mfWeddingBells;
 }
 
-text_main {
+text-main {
 
 }
 
@@ -77,8 +82,8 @@ text_main {
 }
 
 @font-face {
-    font-family: freebooter;
-    src: url(fonts/freebooter.ttf);
+    font-family: freebooterScript;
+    src: url(fonts/freebooter_script.ttf);
 }
 
 @font-face {
@@ -113,6 +118,6 @@ text_main {
 
 @font-face {
     font-family: youreInvitedHeavy;
-    src: url(fonts/youre_invited_heavy.ttf);
+    src: url(fonts/youre_invited_heavy.otf);
 }
 
