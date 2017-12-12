@@ -1,8 +1,5 @@
 body {
-
-}
-div#contents {
-
+    display: block;
 }
 
 div#card {
@@ -26,6 +23,12 @@ div#card {
 
 div#content {
     /* padding: 10px; */
+}
+
+#selectors {
+    /* table-layout: inherit; */
+    /* width: 100%; */
+    border: solid 5px;
 }
 
 table {

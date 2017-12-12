@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Stationary Designer</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="save-the-date.css">
@@ -16,35 +16,24 @@
         </h2>
 
         <div id="selectors">
-
-            <table>
-                <tr>
-                    <td>                            
-                        Select your fancy font:<br />
-                        <select id="select-font">
-                        </select>
-                    </td>
-                    
-                    <td>
-                        <button id="font-inc">
-                            font +
-                        </button><br /><br />
-
-                        <button id="font-dec">
-                            font -
-                        </button>
-
-                    </td>
-
-                    <td>
-                        Select your accent paper:<br />
-                        <select id="select-paper">
-                        </select>
-                    </td>
-                </tr>
-            </table>
-
             
+            Names:
+            <input type="text" placeholder="Bride & Groom" id="input-name"/>
+
+            Date:
+            <input type="date" value="2018-09-01" id="input-date" /><br /><br />
+
+            Select your fancy font:<br />
+            <select id="select-font">
+            </select>
+
+            <input type="button" value = "font +" id="font-inc" />
+
+            <input type="button" value = "font -" id="font-dec" /><br /><br />
+
+            Select your accent paper:<br />
+            <select id="select-paper">
+            </select>            
 
         </div>
         
