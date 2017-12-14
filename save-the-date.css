@@ -1,8 +1,32 @@
+/* HTML standard elements */
 body {
     display: block;
 }
 
-div#card {
+table {
+    margin: auto;
+    width: 350px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+/* Stationary ids */
+#page-title {
+    text-align: center;
+    font-variant-caps: small-caps;
+}
+
+#selectors {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid 5px;
+    /* table-layout: inherit; */
+    /* width: 100%; */
+}
+
+#card {
     background-color: #ffffcc;
     height: 500px;
     width: 375px;
@@ -21,34 +45,9 @@ div#card {
     background-color: gray;
 }
 
-div#content {
+#content {
+    /* border: solid; */
     /* padding: 10px; */
-}
-
-#selectors {
-    /* table-layout: inherit; */
-    /* width: 100%; */
-    border: solid 5px;
-}
-
-table {
-    margin: auto;
-    width: 350px;
-}
-
-h1, h2, h3 {
-    margin: 0;
-}
-
-/* Stationary Sections */
-#page-title {
-    text-align: center;
-    font-variant-caps: small-caps;
-}
-
-#selectors {
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 #header {
@@ -59,20 +58,20 @@ h1, h2, h3 {
     font-family: mfWeddingBells;
 }
 
-text-main {
-
-}
-
 #date {
 
 }
 
-#footer {
+#text-main {
 
 }
 
+#footer {
+    font-size: 12px;
+    /* margin-bottom: 0; */
+}
 
-/* Font Declarations */
+/* Font declarations */
 @font-face {
     font-family: anisha;
     src: url(fonts/anisha.otf);
