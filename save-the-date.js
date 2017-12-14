@@ -1,26 +1,39 @@
 $(document).ready(function(){
-
+    
+    /**
+     * @summary Font object constructor
+     * @param {string} name The css font-face font-family
+     * @param {number} max_size The maximum size the font can be
+    */
+    function Font(name, max_size) {
+        this.name = name
+        this.max_size = max_size
+    }
+    
+    // Create an array of Font objects
     const FONTS = [
-        'anisha',
-        'behindScript',
-        'bolina',
-        'freebooterScript',
-        'hugsAndKisses',
-        'mfWeddingBells',
-        'mirellaScript',
-        'qaskinBlack',
-        'respective',
-        'theHeartOfEverything',
-        'youreInvitedHeavy'
+        new Font('anisha', 35),
+        new Font('behindScript', ''),
+        new Font('bolina', '?'),
+        new Font('freebooterScript', ''),
+        new Font('hugsAndKisses', ''),
+        new Font('mfWeddingBells', ''),
+        new Font('mirellaScript', ''),
+        new Font('qaskinBlack', ''),
+        new Font('respective', ''),
+        new Font('theHeartOfEverything', ''),
+        new Font('youreInvitedHeavy', '')
     ]
 
+    // Create an array of paper file names
     const PAPERS = [
         'rose_silver',
         'swirl_silver'
     ]
 
     FONTS.forEach(font => {      
-        $('#select-font').append('<option>' + font + '</option>')
+        $('#select-font').append('<option>' + font.name + '</option>')
+        // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
     })
     
     PAPERS.forEach(paper => {      
@@ -39,15 +52,17 @@ $(document).ready(function(){
     })    
 
     $('#font-inc').click(() => {
-        let fontSize = parseInt($('#names, #header').css("font-size"));
-        fontSize = fontSize + 1 + 'px';
-        $('#names, #header').css({'font-size':fontSize});
+        let fontSize = parseInt($('#names, #header').css("font-size"))
+        fontSize = fontSize + 1 + 'px'
+        $('#names, #header').css({'font-size':fontSize})
+        console.log('Font Size Up To: ' + fontSize)
     })  
 
     $('#font-dec').click(() => {
-        let fontSize = parseInt($('#names, #header').css("font-size"));
-        fontSize = fontSize - 1 + 'px';
-        $('#names, #header').css({'font-size':fontSize});
+        let fontSize = parseInt($('#names, #header').css("font-size"))
+        fontSize = fontSize - 1 + 'px'
+        $('#names, #header').css({'font-size':fontSize})
+        console.log('Font Size Down To: ' + fontSize)
     })
 
     $('#select-paper').on('change', () => {
