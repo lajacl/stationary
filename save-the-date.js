@@ -12,17 +12,17 @@ $(document).ready(function(){
     
     // Create an array of Font objects
     const FONTS = [
-        new Font('anisha', 35),
-        new Font('behindScript', ''),
-        new Font('bolina', '?'),
-        new Font('freebooterScript', ''),
-        new Font('hugsAndKisses', ''),
-        new Font('mfWeddingBells', ''),
-        new Font('mirellaScript', ''),
-        new Font('qaskinBlack', ''),
-        new Font('respective', ''),
-        new Font('theHeartOfEverything', ''),
-        new Font('youreInvitedHeavy', '')
+        new Font('anisha', 34),
+        new Font('behindScript', 34),
+        new Font('bolina', 34),
+        new Font('freebooterScript', 24),
+        new Font('hugsAndKisses', ),
+        new Font('mfWeddingBells', ),
+        new Font('mirellaScript', ),
+        new Font('qaskinBlack', ),
+        new Font('respective', ),
+        new Font('theHeartOfEverything', ),
+        new Font('youreInvitedHeavy', )
     ]
 
     // Create an array of paper file names

@@ -19,8 +19,8 @@ h1, h2, h3 {
 }
 
 #selectors {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: solid 5px;
     /* table-layout: inherit; */
     /* width: 100%; */
@@ -38,11 +38,17 @@ h1, h2, h3 {
 #accent-paper {
     height: 100px;
     background: darkgray url("accent-paper/swirl_silver.jpg") center no-repeat;
+
 }
 
 #ribbon {
     height: 75px;
-    background-color: gray;
+    background-image: url(ribbon/ribbon_gray.jpg)
+    /* background-color: gray; */
+}
+
+#buckle {
+    height: inherit;
 }
 
 #content {
