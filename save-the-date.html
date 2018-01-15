@@ -27,13 +27,21 @@
             <select id="select-font">
             </select>
 
-            <input type="button" value = "font +" id="font-inc" />
+            <input type="button" value = "font +" id="font-increase-button" />
 
-            <input type="button" value = "font -" id="font-dec" /><br /><br />
+            <input type="button" value = "font -" id="font-decrease-button" /><br /><br />
 
-            Select your accent paper:<br />
-            <select id="select-paper">
-            </select>            
+            <div id="select-text-paper">
+                Select your text paper:<br />
+            </div><br />    
+
+            <div id="select-cardstock">
+                Select your background paper:<br />
+            </div><br />    
+
+            <div id="select-accent-paper">
+                Select your accent paper:<br />
+            </div>          
 
         </div>
         
@@ -51,8 +59,8 @@
                 September 2018
             </p>
 
-            <table id="text-main">
-                <tr>
+            <table id="month">
+                <tr id="day">
                     <th>S</th>
                     <th>M</th>
                     <th>T</th>
@@ -125,5 +133,7 @@
             </p>
         </div>
     </div>
+    <br />
+    <br />
     </body>
 </html>

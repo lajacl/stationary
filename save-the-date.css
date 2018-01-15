@@ -21,23 +21,26 @@ h1, h2, h3 {
 #selectors {
     margin-top: 20px;
     margin-bottom: 20px;
-    border: solid 5px;
-    /* table-layout: inherit; */
-    /* width: 100%; */
+    padding: 20px;
+    border: 5px solid darkgray;
 }
 
-#card {
-    background-color: #ffffcc;
+#select-font {
+    /* font-size: 30px; */
+}
+
+#card { 
+    background-image: url("cardstock/silver_metallic_light.jpg");
     height: 500px;
     width: 375px;
     box-shadow: 10px 10px 5px #888888;
     text-align: center;
-    border: 25px solid lightgray;
+    padding: 25px;
 }
 
 #accent-paper {
     height: 100px;
-    background: darkgray url("accent-paper/swirl_silver.jpg") center no-repeat;
+    background: darkgray url("accent-paper/silver_swirl.jpg") center;
 
 }
 
@@ -52,8 +55,8 @@ h1, h2, h3 {
 }
 
 #content {
-    /* border: solid; */
-    /* padding: 10px; */
+    background: #ffffcc url("text-paper/cream_linen.jpg");
+    padding: 10px;
 }
 
 #header {
@@ -68,7 +71,7 @@ h1, h2, h3 {
 
 }
 
-#text-main {
+#month {
 
 }
 
