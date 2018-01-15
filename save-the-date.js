@@ -51,6 +51,7 @@ $(document).ready(function(){
      */
     FONTS.forEach(font => {      
         $('#select-font').append('<option>' + font.name + '</option>')
+        // $('#select-font').append('<option style="font-family:' + font.name + ';">' + 'Bride & Groom' + '</option>')
         // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
     })
     
