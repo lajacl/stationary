@@ -56,18 +56,18 @@ $(document).ready(function(){
     })
     
     PAPERS.text_paper.forEach(paper => {      
-        $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
-        paper + ' <img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" height = "50px" width = "100px"/>')
+        $('#select-text-paper').append('<label for="' + paper + '"><input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
+        paper + '<div class="image-block" ><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "preview-image"/></label></div>')
     })
     
     PAPERS.cardstock.forEach(paper => {      
         $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value ="' + paper + '"/>' +
-        paper + ' <img src="cardstock/' + paper + '.jpg" alt ="' + paper + '" height = "50px" width = "100px"/>')
+        paper + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "preview-image"/></div>')
     })
     
     PAPERS.accent_paper.forEach(paper => {      
         $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value ="' + paper + '"/>' +
-        paper + ' <img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '" height = "50px" width = "100px"/>')
+        paper + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "preview-image"/></div>')
     })
     
 
@@ -82,7 +82,7 @@ $(document).ready(function(){
         // let valueSelected = optionSelected.val();
         // console.log('Value Selected: ' + valueSelected);
         
-        $('#names, #header, #select-font').css('font-family', fontSelected)
+        $('#names, #header').css('font-family', fontSelected)
     })    
 
     // + button clicked to increase font size

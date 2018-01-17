@@ -3,16 +3,15 @@ body {
     display: block;
 }
 
-table {
-    margin: auto;
-    width: 350px;
-}
-
 h1, h2, h3 {
     margin: 0;
 }
 
 /* Stationary ids */
+#page {
+    width: vw;
+}
+
 #page-title {
     text-align: center;
     font-variant-caps: small-caps;
@@ -22,12 +21,37 @@ h1, h2, h3 {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
-    border: 5px solid darkgray;
-    width: 100%;
+    border: 3px solid darkgray;
+    /* min-width: 200px; */
+    font-weight: bold;
 }
 
 #select-font {
     /* font-size: 30px; */
+}
+
+#selectors table {
+    width: 100%;
+    /* height: 100px; */
+}
+
+#selectors td {
+    vertical-align: top;
+}
+
+#selectors p {
+    /* color: #888888; */
+    /* background-color: #888888; */
+}
+
+.image-block {
+    height: 50px;
+    width: 100px;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
 }
 
 #card { 
@@ -73,7 +97,8 @@ h1, h2, h3 {
 }
 
 #month {
-
+    margin: auto;
+    width: 350px;
 }
 
 #footer {
