@@ -27,7 +27,7 @@ $(document).ready(function(){
     ]
 
     // Create an array of paper file names
-    const PAPERS = {
+    const OPTIONS = {
         text_paper: [
             'white_linen',
             'cream_linen',
@@ -42,6 +42,11 @@ $(document).ready(function(){
             'silver_rose',
             'silver_swirl',
             'silver_pebble'
+        ],
+        buckle: [
+            'heart',
+            'circle',
+            'diamond'
         ]
     }
 
@@ -55,19 +60,24 @@ $(document).ready(function(){
         // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
     })
     
-    PAPERS.text_paper.forEach(paper => {      
-        $('#select-text-paper').append('<label for="' + paper + '"><input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
-        paper + '<div class="image-block" ><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "preview-image"/></label></div>')
+    OPTIONS.text_paper.forEach(paper => {      
+        $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
+        paper + '<div class="image-block" ><label for="' + paper + '"><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "preview-image"/></label></div>')
     })
     
-    PAPERS.cardstock.forEach(paper => {      
+    OPTIONS.cardstock.forEach(paper => {      
         $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value ="' + paper + '"/>' +
         paper + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "preview-image"/></div>')
     })
     
-    PAPERS.accent_paper.forEach(paper => {      
+    OPTIONS.accent_paper.forEach(paper => {      
         $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value ="' + paper + '"/>' +
         paper + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "preview-image"/></div>')
+    })    
+    
+    OPTIONS.buckle.forEach(buckle => {      
+        $('#select-buckle').append('<input type="radio" name ="selected-buckle" value ="' + buckle + '"/>' +
+    buckle + '<div class="image-block" ><img src="buckles/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
     })
     
 
@@ -118,6 +128,12 @@ $(document).ready(function(){
     $('input[name=selected-accent-paper]').on('change', () => {
         let paperSelected = $('input[name=selected-accent-paper]:checked').val()
         $('#accent-paper').css('background-image', 'url(accent-paper/' + paperSelected + '.jpg)')
+    })
+
+    // radio button clicked to change buckle embellishment
+    $('input[name=selected-buckle]').on('change', () => {
+        let buckleSelected = $('input[name=selected-buckle]:checked').val()
+        $('#buckle').attr('src', 'buckles/' + buckleSelected + '.png')
     })
 
 
