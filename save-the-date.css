@@ -46,8 +46,8 @@ h1, h2, h3 {
 }
 
 .image-block {
-    height: 50px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
 }
 
 .preview-image {
@@ -65,24 +65,33 @@ h1, h2, h3 {
     float: left;
 }
 
+#text-paper {
+    background: url("text-paper/warm_white_felt.jpg");
+    /* height: initial; */
+}
+
 #accent-paper {
     height: 100px;
-    background: darkgray url("accent-paper/silver_swirl.jpg") center;
+    background: url("accent-paper/silver_swirl.jpg") center;
 
 }
 
 #ribbon {
     height: 75px;
-    background-image: url(ribbon/ribbon_gray.jpg)
-    /* background-color: gray; */
+    background-image: url(ribbon/ribbon_gray.jpg);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
 }
 
 #buckle {
-    height: inherit;
+    height: inherit;    
+    background-image: url(buckle/heart.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 #content {
-    background: #ffffcc url("text-paper/cream_linen.jpg");
     padding: 10px;
 }
 

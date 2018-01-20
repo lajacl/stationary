@@ -32,7 +32,8 @@ $(document).ready(function(){
             'white_linen',
             'cream_linen',
             'gray_linen',
-            'white_felt'
+            'white_felt',
+            'warm_white_felt'
         ],
         cardstock: [
             'silver_metallic_light',
@@ -77,7 +78,7 @@ $(document).ready(function(){
     
     OPTIONS.buckle.forEach(buckle => {      
         $('#select-buckle').append('<input type="radio" name ="selected-buckle" value ="' + buckle + '"/>' +
-    buckle + '<div class="image-block" ><img src="buckles/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
+    buckle + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
     })
     
 
@@ -93,47 +94,52 @@ $(document).ready(function(){
         // console.log('Value Selected: ' + valueSelected);
         
         $('#names, #header').css('font-family', fontSelected)
-    })    
+    }) 
+
+    // - button clicked to decrease font size
+    $('#font-decrease-button').click(() => {
+        let fontSize = getFontSize();
+
+        if (fontSize > 20) {
+            fontSize = fontSize - 1 + 'px'
+            $('#names, #header').css({'font-size':fontSize})
+        }
+        console.log('Font Size Down To: ' + fontSize)
+    })   
 
     // + button clicked to increase font size
     $('#font-increase-button').click(() => {
-        let fontSize = parseInt($('#names, #header').css("font-size"))
-        if (fontSize < $())
-        fontSize = fontSize + 1 + 'px'
-        $('#names, #header').css({'font-size':fontSize})
+        let fontSize = getFontSize();
+            // if (fontSize < FONTS.getSelectedFont().max_size) {
+            fontSize = fontSize + 1 + 'px'
+            $('#names, #header').css({'font-size':fontSize})
+        // }
         console.log('Font Size Up To: ' + fontSize)
     })  
 
-    // - button clicked to increase font size
-    $('#font-decrease-button').click(() => {
-        let fontSize = parseInt($('#names, #header').css("font-size"))
-        fontSize = fontSize - 1 + 'px'
-        $('#names, #header').css({'font-size':fontSize})
-        console.log('Font Size Down To: ' + fontSize)
-    })
-
     // radio button clicked to change text paper
     $('input[name=selected-text-paper]').on('change', () => {
-        let paperSelected = $('input[name=selected-text-paper]:checked').val()
-        $('#content').css('background-image', 'url(text-paper/' + paperSelected + '.jpg)')
+        let paper_selected = $('input[name=selected-text-paper]:checked').val()
+        $('#content').css('background-image', 'url(text-paper/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change cardstock paper
     $('input[name=selected-cardstock]').on('change', () => {
-        let paperSelected = $('input[name=selected-cardstock]:checked').val()
-        $('#card').css('background-image', 'url(cardstock/' + paperSelected + '.jpg)')
+        let paper_selected = $('input[name=selected-cardstock]:checked').val()
+        $('#card').css('background-image', 'url(cardstock/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change accent paper
     $('input[name=selected-accent-paper]').on('change', () => {
-        let paperSelected = $('input[name=selected-accent-paper]:checked').val()
-        $('#accent-paper').css('background-image', 'url(accent-paper/' + paperSelected + '.jpg)')
+        let paper_selected = $('input[name=selected-accent-paper]:checked').val()
+        $('#accent-paper').css('background-image', 'url(accent-paper/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change buckle embellishment
     $('input[name=selected-buckle]').on('change', () => {
-        let buckleSelected = $('input[name=selected-buckle]:checked').val()
-        $('#buckle').attr('src', 'buckles/' + buckleSelected + '.png')
+        let buckle_selected = $('input[name=selected-buckle]:checked').val()
+        console.log('Buckle Choice: ' + buckle_selected)
+        $('#buckle').css('background-image', 'url(buckle/' + buckle_selected + '.png)')
     })
 
 
@@ -142,6 +148,15 @@ $(document).ready(function(){
      */
     getSelectedFont = () => {
         return $('#select-font').find(':selected').val()
+    }
+
+    getFontSize = () => {
+        return parseInt($('#header').css("font-size"))
+    }
+
+    getItemName = (file_name) => {
+        let item_name
+        return item_name
     }
 
 });
