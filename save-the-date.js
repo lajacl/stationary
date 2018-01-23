@@ -25,6 +25,17 @@ $(document).ready(function(){
             new Font('respective', ),
             new Font('theHeartOfEverything', ),
             new Font('youreInvitedHeavy', )
+            // new Font('anisha', 34),
+            // new Font('behindScript', 34),
+            // new Font('bolina', 34),
+            // new Font('freebooterScript', 24),
+            // new Font('hugsAndKisses', ),
+            // new Font('mfWeddingBells', ),
+            // new Font('mirellaScript', ),
+            // new Font('qaskinBlack', ),
+            // new Font('respective', ),
+            // new Font('theHeartOfEverything', ),
+            // new Font('youreInvitedHeavy', )
         ],
         plain: [
             new Font('Georgia',),
@@ -99,34 +110,36 @@ $(document).ready(function(){
      */
     $('#select-font-fancy').on('change', () => {
         let font_selected = getSelectedFont('#select-font-fancy');
+        let font_size = getFontMaxSize(font_selected);
+        console.log('Font Size: ' + font_size)
 
         // let optionSelected = $('option:selected', this);
 
         // let valueSelected = optionSelected.val();
         // console.log('Value Selected: ' + valueSelected);
         
-        $('#names, #header').css('font-family', font_selected)
+        $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
     }) 
 
     // - button clicked to decrease font size
     $('#font-decrease-button').click(() => {
-        let fontSize = getFontSize();
+        let font_size = getFontSize();
 
-        if (fontSize > 20) {
-            fontSize = fontSize - 1 + 'px'
-            $('#names, #header').css({'font-size':fontSize})
+        if (font_size > 20) {
+            font_size = font_size - 1 + 'px'
+            $('#names, #header').css({'font-size':font_size})
         }
-        console.log('Font Size Down To: ' + fontSize)
+        console.log('Font Size Down To: ' + font_size)
     })   
 
     // + button clicked to increase font size
     $('#font-increase-button').click(() => {
-        let fontSize = getFontSize();
+        let font_size = getFontSize();
             // if (fontSize < FONTS.getSelectedFont().max_size) {
-            fontSize = fontSize + 1 + 'px'
-            $('#names, #header').css({'font-size':fontSize})
+            font_size = font_size + 1 + 'px'
+            $('#names, #header').css({'font-size':font_size})
         // }
-        console.log('Font Size Up To: ' + fontSize)
+        console.log('Font Size Up To: ' + font_size)
     })  
 
     $('#select-font-plain').on('change', () => {
@@ -171,7 +184,7 @@ $(document).ready(function(){
      * Other Functions
      */
     getSelectedFont = (source) => {
-        console.log('Curent Font: ' + $(source).find(':selected').val())
+    //     console.log('Curent Font: ' + $(source).find(':selected').val())
         return $(source).find(':selected').val()
     }
 
@@ -179,9 +192,16 @@ $(document).ready(function(){
         return parseInt($('#header').css("font-size"))
     }
 
-    getItemName = (file_name) => {
-        let item_name
-        return item_name
+    getFontMaxSize = (font) => {
+        FONTS.fancy.forEach(loop_font => {
+            let max_size
+            console.log('Current Loop Font: ' + loop_font.name)
+            if(loop_font.name == font) {
+                console.log('MATCH Font & Max Size: ' + loop_font.name + ' ' + loop_font.max_size.toString())
+                max_size = loop_font.max_size
+            }
+            return max_size
+        })
     }
 
 });

@@ -57,17 +57,18 @@ h1, h2, h3 {
 
 #card { 
     background-image: url("cardstock/silver_metallic_light.jpg");
-    height: 500px;
-    width: 375px;
+    height: 550px;
+    width: 425px;
     box-shadow: 10px 10px 5px #888888;
     text-align: center;
-    padding: 25px;
     float: left;
 }
 
 #text-paper {
     background: url("text-paper/warm_white_felt.jpg");
-    /* height: initial; */
+    margin: 25px;
+    width: 375px;
+    height: 500px;
 }
 
 #accent-paper {
@@ -95,12 +96,13 @@ h1, h2, h3 {
     padding: 10px;
 }
 
-#header {
-    font-family: mfWeddingBells;
+#header, #names {
+    font-family: anisha;
+    font-size: 32px;
 }
 
-#names {
-    font-family: mfWeddingBells;
+#inner-text, #footer {
+    font-family: Georgia;
 }
 
 #date {
@@ -111,10 +113,16 @@ h1, h2, h3 {
     margin: auto;
     width: 350px;
 }
+#event-day {        
+    background-image: url(buckle/circle.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 #footer {
     font-size: 12px;
-    /* margin-bottom: 0; */
+    padding-bottom: 10px;
 }
 
 /* Font declarations */
