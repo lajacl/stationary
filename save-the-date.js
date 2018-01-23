@@ -12,19 +12,27 @@ $(document).ready(function(){
 
     
     // Create an array of Font objects
-    const FONTS = [
-        new Font('anisha', 34),
-        new Font('behindScript', 34),
-        new Font('bolina', 34),
-        new Font('freebooterScript', 24),
-        new Font('hugsAndKisses', ),
-        new Font('mfWeddingBells', ),
-        new Font('mirellaScript', ),
-        new Font('qaskinBlack', ),
-        new Font('respective', ),
-        new Font('theHeartOfEverything', ),
-        new Font('youreInvitedHeavy', )
-    ]
+    const FONTS = {
+        fancy: [
+            new Font('anisha', 34),
+            new Font('behindScript', 34),
+            new Font('bolina', 34),
+            new Font('freebooterScript', 24),
+            new Font('hugsAndKisses', ),
+            new Font('mfWeddingBells', ),
+            new Font('mirellaScript', ),
+            new Font('qaskinBlack', ),
+            new Font('respective', ),
+            new Font('theHeartOfEverything', ),
+            new Font('youreInvitedHeavy', )
+        ],
+        plain: [
+            new Font('Georgia',),
+            new Font('Arial',),
+            new Font('Times',),
+            new Font('Verdana',),
+        ]
+    }
 
     // Create an array of paper file names
     const OPTIONS = {
@@ -55,10 +63,14 @@ $(document).ready(function(){
     /**
      * Loop through arrays to show design options on screen
      */
-    FONTS.forEach(font => {      
-        $('#select-font').append('<option>' + font.name + '</option>')
+    FONTS.fancy.forEach(font => {      
+        $('#select-font-fancy').append('<option>' + font.name + '</option>')
         // $('#select-font').append('<option style="font-family:' + font.name + ';">' + 'Bride & Groom' + '</option>')
         // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
+    })
+
+    FONTS.plain.forEach(font => {      
+        $('#select-font-plain').append('<option>' + font.name + '</option>')
     })
     
     OPTIONS.text_paper.forEach(paper => {      
@@ -85,15 +97,15 @@ $(document).ready(function(){
     /**
      * Handles user changes to form by updating view
      */
-    $('#select-font').on('change', () => {
-        let fontSelected = getSelectedFont();
+    $('#select-font-fancy').on('change', () => {
+        let font_selected = getSelectedFont('#select-font-fancy');
 
         // let optionSelected = $('option:selected', this);
 
         // let valueSelected = optionSelected.val();
         // console.log('Value Selected: ' + valueSelected);
         
-        $('#names, #header').css('font-family', fontSelected)
+        $('#names, #header').css('font-family', font_selected)
     }) 
 
     // - button clicked to decrease font size
@@ -116,6 +128,11 @@ $(document).ready(function(){
         // }
         console.log('Font Size Up To: ' + fontSize)
     })  
+
+    $('#select-font-plain').on('change', () => {
+        let font_selected = getSelectedFont('#select-font-plain');        
+        $('#date, #inner-text, #footer').css('font-family', font_selected)
+    }) 
 
     // radio button clicked to change text paper
     $('input[name=selected-text-paper]').on('change', () => {
@@ -153,8 +170,9 @@ $(document).ready(function(){
     /**
      * Other Functions
      */
-    getSelectedFont = () => {
-        return $('#select-font').find(':selected').val()
+    getSelectedFont = (source) => {
+        console.log('Curent Font: ' + $(source).find(':selected').val())
+        return $(source).find(':selected').val()
     }
 
     getFontSize = () => {
