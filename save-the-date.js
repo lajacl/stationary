@@ -150,7 +150,7 @@ $(document).ready(function(){
     // radio button clicked to change text paper
     $('input[name=selected-text-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-text-paper]:checked').val()
-        $('#content').css('background-image', 'url(text-paper/' + paper_selected + '.jpg)')
+        $('#text-paper').css('background-image', 'url(text-paper/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change cardstock paper
