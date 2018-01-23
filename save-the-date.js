@@ -64,9 +64,9 @@ $(document).ready(function(){
             'silver_pebble'
         ],
         buckle: [
-            'heart',
             'circle',
-            'diamond'
+            'diamond',
+            'heart'
         ]
     }
 
@@ -86,17 +86,17 @@ $(document).ready(function(){
     
     OPTIONS.text_paper.forEach(paper => {      
         $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
-        paper + '<div class="image-block" ><label for="' + paper + '"><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "preview-image"/></label></div>')
+        paper + '<div class="image-block" ><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
     })
     
     OPTIONS.cardstock.forEach(paper => {      
         $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value ="' + paper + '"/>' +
-        paper + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "preview-image"/></div>')
+        paper + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
     })
     
     OPTIONS.accent_paper.forEach(paper => {      
         $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value ="' + paper + '"/>' +
-        paper + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "preview-image"/></div>')
+        paper + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
     })    
     
     OPTIONS.buckle.forEach(buckle => {      
@@ -104,21 +104,34 @@ $(document).ready(function(){
     buckle + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
     })
     
+    setDefaultValues = () => {
+        console.log('Setting Default Values')
+        $('input:radio[name=selected-text-paper]').val(['cream_linen'])
+        $('input:radio[name=selected-cardstock]').val(['silver_metallic_light'])
+        $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
+        $('input:radio[name=selected-buckle]').val(['heart'])
+        $('select[name=select-font-fancy]').val(['youreInvitedHeavy'])
+        $('select[name=select-font-plain]').val(['Times'])
+    }
+
+    setDefaultValues()
+    
 
     /**
      * Handles user changes to form by updating view
      */
     $('#select-font-fancy').on('change', () => {
         let font_selected = getSelectedFont('#select-font-fancy');
-        let font_size = getFontMaxSize(font_selected);
-        console.log('Font Size: ' + font_size)
+        // let font_size = getFontMaxSize(font_selected);
+        // console.log('Font Size: ' + font_size)
 
         // let optionSelected = $('option:selected', this);
 
         // let valueSelected = optionSelected.val();
         // console.log('Value Selected: ' + valueSelected);
-        
-        $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
+
+        $('#names, #header').css('font-family', font_selected)        
+        // $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
     }) 
 
     // - button clicked to decrease font size
@@ -183,6 +196,7 @@ $(document).ready(function(){
     /**
      * Other Functions
      */
+
     getSelectedFont = (source) => {
     //     console.log('Curent Font: ' + $(source).find(':selected').val())
         return $(source).find(':selected').val()
