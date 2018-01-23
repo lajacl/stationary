@@ -1,6 +1,7 @@
 /* HTML standard elements */
 body {
     display: block;
+    white-space: nowrap;
 }
 
 h1, h2, h3 {
@@ -34,6 +35,10 @@ h1, h2, h3 {
 #selectors table {
     /* width: 100%; */
     /* height: 100px; */
+}
+
+#selector-table th {
+    background-color: lightgray;
 }
 
 #selectors td {
@@ -79,8 +84,7 @@ h1, h2, h3 {
 
 #ribbon {
     height: 75px;
-    background-image: url(ribbon/ribbon_gray.jpg);
-    background-repeat: repeat-x;
+    background: darkgray url(ribbon/ribbon_gray.jpg) repeat-x;
     background-size: auto 100%;
 }
 
