@@ -142,6 +142,13 @@ $(document).ready(function(){
         $('#buckle').css('background-image', 'url(buckle/' + buckle_selected + '.png)')
     })
 
+    // input that records the host name(s)
+    $('#input-names').on('change', () => {
+        if($('#input-names').val() != '') {
+            $('#names').text($('#input-names').val())
+        }
+    })
+
 
     /**
      * Other Functions
