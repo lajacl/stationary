@@ -18,28 +18,17 @@ $(document).ready(function(){
     // Create an array of Font objects
     const FONTS = {
         fancy: [
-            new Font('anisha', 34),
-            new Font('behindScript', 34),
-            new Font('bolina', 34),
-            new Font('freebooterScript', 24),
-            new Font('hugsAndKisses', ),
-            new Font('mfWeddingBells', ),
-            new Font('mirellaScript', ),
-            new Font('qaskinBlack', ),
-            new Font('respective', ),
-            new Font('theHeartOfEverything', ),
-            new Font('youreInvitedHeavy', )
-            // new Font('anisha', 34),
-            // new Font('behindScript', 34),
-            // new Font('bolina', 34),
-            // new Font('freebooterScript', 24),
-            // new Font('hugsAndKisses', ),
-            // new Font('mfWeddingBells', ),
-            // new Font('mirellaScript', ),
-            // new Font('qaskinBlack', ),
-            // new Font('respective', ),
-            // new Font('theHeartOfEverything', ),
-            // new Font('youreInvitedHeavy', )
+            new Font('anisha', 44),
+            new Font('behindScript', 40),
+            new Font('bolina', 40),
+            new Font('freebooterScript', 30),
+            new Font('hugsAndKisses', 40),
+            new Font('mfWeddingBells', 40),
+            new Font('mirellaScript', 38),
+            new Font('qaskinBlack', 40),
+            new Font('respective', 44),
+            new Font('theHeartOfEverything', 32),
+            new Font('youreInvitedHeavy', 30)
         ],
         plain: [
             new Font('Georgia',),
@@ -137,8 +126,7 @@ $(document).ready(function(){
     //change date
     $('input[name=input-date]').on('change', () => {
         let selected_date = new Date($('input[name=input-date]').val())
-        // let selected_date = $('input[name=input-date]').val()
-        console.log('Date Selected: ' + selected_date)
+        // console.log('Date Selected: ' + selected_date)
         let day = selected_date.getDate() + 1
         month_index = selected_date.getMonth()
         let month = MONTHS[month_index]
@@ -148,24 +136,17 @@ $(document).ready(function(){
 
     // change fancy font
     $('#select-font-fancy').on('change', () => {
-        let font_selected = getSelectedFont('#select-font-fancy');
-        // let font_size = getFontMaxSize(font_selected);
-        // console.log('Font Size: ' + font_size)
+        let font_selected = getSelectedFont(this);
+        let font_size = getFontMaxSize(font_selected);
 
-        // let optionSelected = $('option:selected', this);
-
-        // let valueSelected = optionSelected.val();
-        // console.log('Value Selected: ' + valueSelected);
-
-        $('#names, #header').css('font-family', font_selected)        
-        // $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
+        $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
     }) 
 
     // - button clicked to decrease font size
     $('#font-decrease-button').click(() => {
         let font_size = getFontSize();
 
-        if (font_size > 20) {
+        if (font_size > 24) {
             font_size = font_size - 1 + 'px'
             $('#names, #header').css({'font-size':font_size})
         }
@@ -175,7 +156,9 @@ $(document).ready(function(){
     // + button clicked to increase font size
     $('#font-increase-button').click(() => {
         let font_size = getFontSize();
-            // if (fontSize < FONTS.getSelectedFont().max_size) {
+        getFontMaxSize();
+        
+        // if (font_size < getFontMaxSize(getSelectedFont('#header'))) {
             font_size = font_size + 1 + 'px'
             $('#names, #header').css({'font-size':font_size})
         // }
@@ -225,9 +208,10 @@ $(document).ready(function(){
      * Other Functions
      */
 
-    getSelectedFont = (source) => {
-    //     console.log('Curent Font: ' + $(source).find(':selected').val())
-        return $(source).find(':selected').val()
+    getSelectedFont = (source) => {    
+        return $('option:selected', source).val();
+        
+        // return $(source).find(':selected').val()
     }
 
     getFontSize = () => {
@@ -235,15 +219,14 @@ $(document).ready(function(){
     }
 
     getFontMaxSize = (font) => {
-        FONTS.fancy.forEach(loop_font => {
-            let max_size
-            console.log('Current Loop Font: ' + loop_font.name)
+
+        for(let i=0; i<FONTS.fancy.length; i++) {
+            let loop_font = FONTS.fancy[i]
             if(loop_font.name == font) {
-                console.log('MATCH Font & Max Size: ' + loop_font.name + ' ' + loop_font.max_size.toString())
-                max_size = loop_font.max_size
+                console.log('MATCH Font & Max Size: ' + loop_font.name + ' ' + loop_font.max_size)
+                return loop_font.max_size
             }
-            return max_size
-        })
+        }
     }
 
 });

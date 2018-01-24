@@ -4,9 +4,9 @@ body {
     white-space: nowrap;
 }
 
-h1, h2, h3 {
+/* h1, h2, h3 {
     margin: 0;
-}
+} */
 
 /* Stationary ids */
 #page {
@@ -97,12 +97,14 @@ h1, h2, h3 {
 }
 
 #content {
-    padding: 10px;
+    height: 325px;
+    padding: 0 5px;
 }
 
 #header, #names {
     font-family: youreInvitedHeavy;
-    font-size: 24px;
+    font-size: 30px;
+    margin: 0;
 }
 
 #inner-text, #footer {
@@ -110,7 +112,8 @@ h1, h2, h3 {
 }
 
 #date {
-
+    margin: 0;
+    padding: 5px 0 10px 0;
 }
 
 #month {
@@ -126,7 +129,6 @@ h1, h2, h3 {
 
 #footer {
     font-size: 12px;
-    padding-bottom: 10px;
 }
 
 /* Font declarations */
