@@ -9,7 +9,11 @@ $(document).ready(function(){
         this.name = name
         this.max_size = max_size
     }
-
+    
+    // Create an array of Month names
+    const MONTHS = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+  ]
     
     // Create an array of Font objects
     const FONTS = {
@@ -105,7 +109,17 @@ $(document).ready(function(){
     })
     
     setDefaultValues = () => {
-        console.log('Setting Default Values')
+        // get today, make date min 1 month ahead, make max 1 year ahead
+        let today = new Date()
+        let year = today.getFullYear()
+        let month = today.getMonth()
+        let day = today.getDate()
+        let min_date = year + '-' + month+2 + '-' + day
+        let max_date = year+1 + '-' + month+1 + '-' + day
+
+        // set default values for form options
+        $('input[name=input-date]').attr('min', min_date)
+        $('input[name=input-date]').attr('max', max_date)
         $('input:radio[name=selected-text-paper]').val(['cream_linen'])
         $('input:radio[name=selected-cardstock]').val(['silver_metallic_light'])
         $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
@@ -120,6 +134,19 @@ $(document).ready(function(){
     /**
      * Handles user changes to form by updating view
      */
+    //change date
+    $('input[name=input-date]').on('change', () => {
+        let selected_date = new Date($('input[name=input-date]').val())
+        // let selected_date = $('input[name=input-date]').val()
+        console.log('Date Selected: ' + selected_date)
+        let day = selected_date.getDate() + 1
+        month_index = selected_date.getMonth()
+        let month = MONTHS[month_index]
+        let year = selected_date.getFullYear()
+        $('#date').text(month + ' ' + day + ', ' + year)
+    })
+
+    // change fancy font
     $('#select-font-fancy').on('change', () => {
         let font_selected = getSelectedFont('#select-font-fancy');
         // let font_size = getFontMaxSize(font_selected);
@@ -155,6 +182,7 @@ $(document).ready(function(){
         console.log('Font Size Up To: ' + font_size)
     })  
 
+    // change plain font
     $('#select-font-plain').on('change', () => {
         let font_selected = getSelectedFont('#select-font-plain');        
         $('#date, #inner-text, #footer').css('font-family', font_selected)
