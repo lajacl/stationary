@@ -109,7 +109,7 @@ $(document).ready(function(){
         // set default values for form options
         $('input[name=input-date]').attr('min', min_date)
         $('input[name=input-date]').attr('max', max_date)
-        $('input:radio[name=selected-text-paper]').val(['cream_linen'])
+        $('input:radio[name=selected-text-paper]').val(['warm_white_felt'])
         $('input:radio[name=selected-cardstock]').val(['silver_metallic_light'])
         $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
         $('input:radio[name=selected-buckle]').val(['heart'])

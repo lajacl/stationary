@@ -33,12 +33,14 @@ body {
 }
 
 #selectors table {
+    /* border-spacing: 0; */
     /* width: 100%; */
     /* height: 100px; */
 }
 
 #selector-table th {
     background-color: lightgray;
+    text-align: left;
 }
 
 #selectors td {
