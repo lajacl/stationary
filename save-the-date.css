@@ -95,16 +95,16 @@ body {
 }
 
 #content {
-    z-index: 200;
-    height: 325px;
+    height: 340px;
     padding: 0 5px;
     overflow: hidden;
+    position: relative;
+    bottom: 15px;
 }
 
 #header, #names {
     font-family: youreInvitedHeavy;
-    font-size: 30px;
-    margin: 0;
+    font-size: 28px;
 }
 
 #inner-text, #footer {
@@ -131,6 +131,9 @@ body {
 
 #footer {
     font-size: 12px;
+    text-transform: uppercase;
+    position: relative;
+    bottom: -20px;
 }
 
 #help {

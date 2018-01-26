@@ -18,17 +18,17 @@ $(document).ready(function(){
     // Create an array of Font objects
     const FONTS = {
         fancy: [
-            new Font('anisha', 44),
-            new Font('behindScript', 40),
-            new Font('bolina', 40),
-            new Font('freebooterScript', 30),
-            new Font('hugsAndKisses', 40),
-            new Font('mfWeddingBells', 40),
-            new Font('mirellaScript', 38),
-            new Font('qaskinBlack', 40),
-            new Font('respective', 44),
-            new Font('theHeartOfEverything', 32),
-            new Font('youreInvitedHeavy', 30)
+            new Font('anisha', 42),
+            new Font('behindScript', 38),
+            new Font('bolina', 38),
+            new Font('freebooterScript', 28),
+            new Font('hugsAndKisses', 38),
+            new Font('mfWeddingBells', 38),
+            new Font('mirellaScript', 36),
+            new Font('qaskinBlack', 38),
+            new Font('respective', 42),
+            new Font('theHeartOfEverything', 30),
+            new Font('youreInvitedHeavy', 28)
         ],
         plain: [
             new Font('Georgia',),
@@ -172,6 +172,14 @@ $(document).ready(function(){
     /**
      * Handles user changes to form by updating view
      */
+
+    // input that records the host name(s)
+    $('#input-names').on('change', () => {
+        if($('#input-names').val() != '') {
+            $('#names').text($('#input-names').val())
+        }
+    })
+
     //change date
     $('input[name=input-date]').on('change', () => {
         let selected_date = new Date($('input[name=input-date]').val() + 'T00:00')
@@ -259,11 +267,9 @@ $(document).ready(function(){
         $('#ribbon').css('background-image', 'url(assets/ribbon/' + ribbon_selected + '.png)')
     })
 
-    // input that records the host name(s)
-    $('#input-names').on('change', () => {
-        if($('#input-names').val() != '') {
-            $('#names').text($('#input-names').val())
-        }
+    // input that records the location
+    $('#input-location').on('change', () => {
+            $('#location').text($('#input-location').val())
     })
 
 });
