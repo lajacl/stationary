@@ -65,7 +65,8 @@ $(document).ready(function(){
         ribbon: [
             'white',
             'silver',
-            'gray'
+            'gray',
+            'black'
         ]
     }
 
@@ -96,9 +97,9 @@ $(document).ready(function(){
     }
 
     getSelectedFont = (source) => {    
-        return $('option:selected', source).val();
+        // return $('option:selected', source).val();
         
-        // return $(source).find(':selected').val()
+        return $(source).find(':selected').val()
     }
 
     getFontSize = () => {
@@ -109,7 +110,6 @@ $(document).ready(function(){
         for(let i=0; i<FONTS.fancy.length; i++) {
             let loop_font = FONTS.fancy[i]
             if(loop_font.name == font) {
-                console.log('MATCH Font & Max Size: ' + loop_font.name + ' ' + loop_font.max_size)
                 return loop_font.max_size
             }
         }
@@ -145,25 +145,25 @@ $(document).ready(function(){
     OPTIONS.cardstock.forEach(paper => {   
         let label = getOptionName(paper)   
         $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value="' + paper + '"/>' +
-        label + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
+        label + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
     })
     
     OPTIONS.accent_paper.forEach(paper => {  
         let label = getOptionName(paper)    
         $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value="' + paper + '"/>' +
-        label + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
+        label + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
     })    
     
     OPTIONS.buckle.forEach(buckle => {  
         let label = getOptionName(buckle)    
         $('#select-buckle').append('<input type="radio" name ="selected-buckle" value="' + buckle + '"/>' +
-    label + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
+    label + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" class = "sample-image"/></div>')
     })   
     
     OPTIONS.ribbon.forEach(ribbon => {  
         let label = getOptionName(ribbon)    
         $('#select-ribbon').append('<input type="radio" name ="selected-ribbon" value="' + ribbon + '"/>' +
-    label + '<div class="image-block" ><img src="ribbon/' + ribbon + '.png" alt ="' + ribbon + '" height="50px"/></div>')
+    label + '<div class="image-block" ><img src="ribbon/' + ribbon + '.png" alt ="' + ribbon + '" class = "sample-image"/></div>')
     })
 
     setDefaultValues()
@@ -184,7 +184,7 @@ $(document).ready(function(){
 
     // change fancy font
     $('#select-font-fancy').on('change', () => {
-        let font_selected = getSelectedFont(this);
+        let font_selected = getSelectedFont('#select-font-fancy');
         let font_size = getFontMaxSize(font_selected);
 
         $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
@@ -192,25 +192,35 @@ $(document).ready(function(){
 
     // - button clicked to decrease font size
     $('#font-decrease-button').click(() => {
-        let font_size = getFontSize();
+        let current_font_size = getFontSize();
 
-        if (font_size > 24) {
-            font_size = font_size - 1 + 'px'
-            $('#names, #header').css({'font-size':font_size})
+        if (current_font_size > 24) {
+            $('#help').text('')
+            current_font_size = current_font_size - 1 + 'px'
+            $('#names, #header').css({'font-size':current_font_size})
+        } else {
+            $('#help').text('Minimum font size reached')
+            setTimeout(() => {
+                $('#help').text('')
+             }, 5000)
         }
-        console.log('Font Size Down To: ' + font_size)
     })   
 
     // + button clicked to increase font size
     $('#font-increase-button').click(() => {
-        let font_size = getFontSize();
-        getFontMaxSize();
+        let current_font_size = getFontSize();
+        let max_font_size = getFontMaxSize(getSelectedFont('#select-font-fancy'))
         
-        // if (font_size < getFontMaxSize(getSelectedFont('#header'))) {
-            font_size = font_size + 1 + 'px'
-            $('#names, #header').css({'font-size':font_size})
-        // }
-        console.log('Font Size Up To: ' + font_size)
+        if (current_font_size < max_font_size) {
+            $('#help').text('')
+            current_font_size = current_font_size + 1 + 'px'
+            $('#names, #header').css({'font-size':current_font_size})
+        } else {
+            $('#help').text('Maximum font size reached')
+            setTimeout(() => {
+                $('#help').text('')
+             }, 5000)
+        }
     })  
 
     // change plain font
