@@ -54,7 +54,7 @@ body {
 }
 
 #card { 
-    background-image: url("cardstock/silver_metallic_light.jpg");
+    background-image: url("assets/cardstock-paper/silver_metallic_light.jpg");
     height: 550px;
     width: 425px;
     box-shadow: 10px 10px 5px #888888;
@@ -64,7 +64,7 @@ body {
 }
 
 #text-paper {
-    background: url("text-paper/warm_white_felt.jpg");
+    background: url("assets/text-paper/warm_white_felt.jpg");
     margin: 25px;
     width: 375px;
     height: 500px;
@@ -72,13 +72,13 @@ body {
 
 #accent-paper {
     height: 100px;
-    background: url("accent-paper/silver_swirl.jpg") center;
+    background: url("assets/accent-paper/silver_swirl.jpg") center;
 
 }
 
 #ribbon {
     height: 75px;
-    background-image: url(ribbon/silver.png);
+    background-image: url(assets/ribbon/silver.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -88,13 +88,14 @@ body {
 
 #buckle {
     height: inherit;    
-    background-image: url(buckle/heart.png);
+    background-image: url(assets/buckle/heart.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
 
 #content {
+    z-index: 200;
     height: 325px;
     padding: 0 5px;
     overflow: hidden;
@@ -122,7 +123,7 @@ body {
 }
 
 #event-day {        
-    background-image: url(buckle/date_marker.png);
+    background-image: url(assets/buckle/date_marker.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -140,56 +141,56 @@ body {
 /* Font declarations */
 @font-face {
     font-family: anisha;
-    src: url(fonts/anisha.otf);
+    src: url(assets/font/anisha.otf);
 }
 
 @font-face {
     font-family: behindScript;
-    src: url(fonts/behind_script.otf);
+    src: url(assets/font/behind_script.otf);
 }
 
 @font-face {
     font-family: bolina;
-    src: url(fonts/bolina.otf);
+    src: url(assets/font/bolina.otf);
 }
 
 @font-face {
     font-family: freebooterScript;
-    src: url(fonts/freebooter_script.ttf);
+    src: url(assets/font/freebooter_script.ttf);
 }
 
 @font-face {
     font-family: hugsAndKisses;
-    src: url(fonts/hugs_and_kisses.ttf);
+    src: url(assets/font/hugs_and_kisses.ttf);
 }
 
 @font-face {
     font-family: mfWeddingBells;
-    src: url(fonts/mf_wedding_bells.ttf);
+    src: url(assets/font/mf_wedding_bells.ttf);
 }
 
 @font-face {
     font-family: mirellaScript;
-    src: url(fonts/mirella_script.ttf);
+    src: url(assets/font/mirella_script.ttf);
 }
 
 @font-face {
     font-family: qaskinBlack;
-    src: url(fonts/qaskin_black.ttf);
+    src: url(assets/font/qaskin_black.ttf);
 }
 
 @font-face {
     font-family: respective;
-    src: url(fonts/respective.ttf);
+    src: url(assets/font/respective.ttf);
 }
 
 @font-face {
     font-family: theHeartOfEverything;
-    src: url(fonts/the_heart_of_everything.ttf);
+    src: url(assets/font/the_heart_of_everything.ttf);
 }
 
 @font-face {
     font-family: youreInvitedHeavy;
-    src: url(fonts/youre_invited_heavy.otf);
+    src: url(assets/font/youre_invited_heavy.otf);
 }
 

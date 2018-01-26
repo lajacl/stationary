@@ -139,31 +139,31 @@ $(document).ready(function(){
     OPTIONS.text_paper.forEach(paper => { 
         let label = getOptionName(paper)
         $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value="' + paper + '"/>' +
-        label + '<div class="image-block" ><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+        label + '<div class="image-block" ><img src="assets/text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
     })
     
     OPTIONS.cardstock.forEach(paper => {   
         let label = getOptionName(paper)   
         $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value="' + paper + '"/>' +
-        label + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+        label + '<div class="image-block" ><img src="assets/cardstock-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
     })
     
     OPTIONS.accent_paper.forEach(paper => {  
         let label = getOptionName(paper)    
         $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value="' + paper + '"/>' +
-        label + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+        label + ' <div class="image-block" ><img src="assets/accent-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
     })    
     
     OPTIONS.buckle.forEach(buckle => {  
         let label = getOptionName(buckle)    
         $('#select-buckle').append('<input type="radio" name ="selected-buckle" value="' + buckle + '"/>' +
-    label + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" class = "sample-image"/></div>')
+    label + '<div class="image-block" ><img src="assets/buckle/' + buckle + '.png" alt ="' + buckle + '" class = "sample-image"/></div>')
     })   
     
     OPTIONS.ribbon.forEach(ribbon => {  
         let label = getOptionName(ribbon)    
         $('#select-ribbon').append('<input type="radio" name ="selected-ribbon" value="' + ribbon + '"/>' +
-    label + '<div class="image-block" ><img src="ribbon/' + ribbon + '.png" alt ="' + ribbon + '" class = "sample-image"/></div>')
+    label + '<div class="image-block" ><img src="assets/ribbon/' + ribbon + '.png" alt ="' + ribbon + '" class = "sample-image"/></div>')
     })
 
     setDefaultValues()
@@ -232,31 +232,31 @@ $(document).ready(function(){
     // radio button clicked to change text paper
     $('input[name=selected-text-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-text-paper]:checked').val()
-        $('#text-paper').css('background-image', 'url(text-paper/' + paper_selected + '.jpg)')
+        $('#text-paper').css('background-image', 'url(assets/text-paper/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change cardstock paper
     $('input[name=selected-cardstock]').on('change', () => {
         let paper_selected = $('input[name=selected-cardstock]:checked').val()
-        $('#card').css('background-image', 'url(cardstock/' + paper_selected + '.jpg)')
+        $('#card').css('background-image', 'url(assets/cardstock-paper/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change accent paper
     $('input[name=selected-accent-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-accent-paper]:checked').val()
-        $('#accent-paper').css('background-image', 'url(accent-paper/' + paper_selected + '.jpg)')
+        $('#accent-paper').css('background-image', 'url(assets/accent-paper/' + paper_selected + '.jpg)')
     })
 
     // radio button clicked to change buckle embellishment
     $('input[name=selected-buckle]').on('change', () => {
         let buckle_selected = $('input[name=selected-buckle]:checked').val()
-        $('#buckle').css('background-image', 'url(buckle/' + buckle_selected + '.png)')
+        $('#buckle').css('background-image', 'url(assets/buckle/' + buckle_selected + '.png)')
     })
 
     // radio button clicked to change ribbon
     $('input[name=selected-ribbon]').on('change', () => {
         let ribbon_selected = $('input[name=selected-ribbon]:checked').val()
-        $('#ribbon').css('background-image', 'url(ribbon/' + ribbon_selected + '.png)')
+        $('#ribbon').css('background-image', 'url(assets/ribbon/' + ribbon_selected + '.png)')
     })
 
     // input that records the host name(s)
