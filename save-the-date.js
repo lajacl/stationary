@@ -63,40 +63,11 @@ $(document).ready(function(){
         ]
     }
 
-
+    
     /**
-     * Loop through arrays to show design options on screen
+     * Other Functions
      */
-    FONTS.fancy.forEach(font => {      
-        $('#select-font-fancy').append('<option>' + font.name + '</option>')
-        // $('#select-font').append('<option style="font-family:' + font.name + ';">' + 'Bride & Groom' + '</option>')
-        // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
-    })
-
-    FONTS.plain.forEach(font => {      
-        $('#select-font-plain').append('<option>' + font.name + '</option>')
-    })
-    
-    OPTIONS.text_paper.forEach(paper => {      
-        $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
-        paper + '<div class="image-block" ><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
-    })
-    
-    OPTIONS.cardstock.forEach(paper => {      
-        $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value ="' + paper + '"/>' +
-        paper + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
-    })
-    
-    OPTIONS.accent_paper.forEach(paper => {      
-        $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value ="' + paper + '"/>' +
-        paper + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
-    })    
-    
-    OPTIONS.buckle.forEach(buckle => {      
-        $('#select-buckle').append('<input type="radio" name ="selected-buckle" value ="' + buckle + '"/>' +
-    buckle + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
-    })
-    
+        
     setDefaultValues = () => {
         // get today, make date min 1 month ahead, make max 1 year ahead
         let today = new Date()
@@ -117,6 +88,69 @@ $(document).ready(function(){
         $('select[name=select-font-plain]').val(['Times'])
     }
 
+    getSelectedFont = (source) => {    
+        return $('option:selected', source).val();
+        
+        // return $(source).find(':selected').val()
+    }
+
+    getFontSize = () => {
+        return parseInt($('#header').css("font-size"))
+    }
+
+    getFontMaxSize = (font) => {
+        for(let i=0; i<FONTS.fancy.length; i++) {
+            let loop_font = FONTS.fancy[i]
+            if(loop_font.name == font) {
+                console.log('MATCH Font & Max Size: ' + loop_font.name + ' ' + loop_font.max_size)
+                return loop_font.max_size
+            }
+        }
+    }
+
+    getOptionName = (file_name) => {
+        return file_name.replace(/_/g, ' ')
+        .replace(/\b\w/g, l => l.toUpperCase())
+    }
+
+
+    /**
+     * Loop through arrays to show design options on screen
+     */
+    FONTS.fancy.forEach(font => {      
+        $('#select-font-fancy').append('<option>' + font.name + '</option>')
+        // $('#select-font').append('<option style="font-family:' + font.name + ';">' + 'Bride & Groom' + '</option>')
+        // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
+    })
+
+    FONTS.plain.forEach(font => {      
+        $('#select-font-plain').append('<option>' + font.name + '</option>')
+    })
+    
+    OPTIONS.text_paper.forEach(paper => { 
+        let label = getOptionName(paper)
+        $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value ="' + paper + '"/>' +
+        label + '<div class="image-block" ><img src="text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+    })
+    
+    OPTIONS.cardstock.forEach(paper => {   
+        let label = getOptionName(paper)   
+        $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value ="' + paper + '"/>' +
+        label + '<div class="image-block" ><img src="cardstock/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
+    })
+    
+    OPTIONS.accent_paper.forEach(paper => {  
+        let label = getOptionName(paper)    
+        $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value ="' + paper + '"/>' +
+        label + ' <div class="image-block" ><img src="accent-paper/' + paper + '.jpg" alt ="' + paper + '"  class = "sample-image"/></div>')
+    })    
+    
+    OPTIONS.buckle.forEach(buckle => {  
+        let label = getOptionName(buckle)    
+        $('#select-buckle').append('<input type="radio" name ="selected-buckle" value ="' + buckle + '"/>' +
+    label + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
+    })
+
     setDefaultValues()
     
 
@@ -125,11 +159,11 @@ $(document).ready(function(){
      */
     //change date
     $('input[name=input-date]').on('change', () => {
-        let selected_date = new Date($('input[name=input-date]').val())
-        // console.log('Date Selected: ' + selected_date)
-        let day = selected_date.getDate() + 1
+        let selected_date = new Date($('input[name=input-date]').val() + 'T00:00')
+        console.log('Date Selected: ' + selected_date)
         month_index = selected_date.getMonth()
         let month = MONTHS[month_index]
+        let day = selected_date.getDate()
         let year = selected_date.getFullYear()
         $('#date').text(month + ' ' + day + ', ' + year)
     })
@@ -202,31 +236,5 @@ $(document).ready(function(){
             $('#names').text($('#input-names').val())
         }
     })
-
-
-    /**
-     * Other Functions
-     */
-
-    getSelectedFont = (source) => {    
-        return $('option:selected', source).val();
-        
-        // return $(source).find(':selected').val()
-    }
-
-    getFontSize = () => {
-        return parseInt($('#header').css("font-size"))
-    }
-
-    getFontMaxSize = (font) => {
-
-        for(let i=0; i<FONTS.fancy.length; i++) {
-            let loop_font = FONTS.fancy[i]
-            if(loop_font.name == font) {
-                console.log('MATCH Font & Max Size: ' + loop_font.name + ' ' + loop_font.max_size)
-                return loop_font.max_size
-            }
-        }
-    }
 
 });
