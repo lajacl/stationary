@@ -59,7 +59,8 @@ $(document).ready(function(){
         buckle: [
             'circle',
             'diamond',
-            'heart'
+            'heart',
+            'square'
         ]
     }
 
@@ -122,8 +123,6 @@ $(document).ready(function(){
     FONTS.fancy.forEach(font => {      
         let label = getOptionName(font.name)
         $('#select-font-fancy').append('<option value="' + font.name + '">' + label + '</option>')
-        // $('#select-font').append('<option style="font-family:' + font.name + ';">' + 'Bride & Groom' + '</option>')
-        // console.log('Font Name: ' + font.name + ' Max Size: ' + font.max_size)
     })
 
     FONTS.plain.forEach(font => {      
@@ -164,7 +163,6 @@ $(document).ready(function(){
     //change date
     $('input[name=input-date]').on('change', () => {
         let selected_date = new Date($('input[name=input-date]').val() + 'T00:00')
-        console.log('Date Selected: ' + selected_date)
         month_index = selected_date.getMonth()
         let month = MONTHS[month_index]
         let day = selected_date.getDate()
@@ -230,7 +228,6 @@ $(document).ready(function(){
     // radio button clicked to change buckle embellishment
     $('input[name=selected-buckle]').on('change', () => {
         let buckle_selected = $('input[name=selected-buckle]:checked').val()
-        console.log('Buckle Choice: ' + buckle_selected)
         $('#buckle').css('background-image', 'url(buckle/' + buckle_selected + '.png)')
     })
 

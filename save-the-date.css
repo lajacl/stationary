@@ -35,8 +35,8 @@ body {
 
 #selector-table th {
     background-color: lightgray;
-    text-align: left;
-    padding-left: 5px;
+    /* text-align: left; */
+    padding: 5px;
 }
 
 #selectors td {
@@ -122,7 +122,7 @@ body {
 }
 
 #event-day {        
-    background-image: url(buckle/circle.png);
+    background-image: url(buckle/date_marker.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
