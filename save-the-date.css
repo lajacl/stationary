@@ -120,8 +120,10 @@ body {
 
 #month {
     margin: auto;
-    width: 350px;
+    width: 100%;
+    padding: 0 10px;
 }
+
 #event-day {        
     background-image: url(buckle/circle.png);
     background-size: contain;
