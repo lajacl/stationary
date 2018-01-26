@@ -61,6 +61,11 @@ $(document).ready(function(){
             'diamond',
             'heart',
             'square'
+        ],
+        ribbon: [
+            'white',
+            'silver',
+            'gray'
         ]
     }
 
@@ -85,6 +90,7 @@ $(document).ready(function(){
         $('input:radio[name=selected-cardstock]').val(['silver_metallic_light'])
         $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
         $('input:radio[name=selected-buckle]').val(['heart'])
+        $('input:radio[name=selected-ribbon]').val(['silver'])
         $('select[name=select-font-fancy]').val(['youreInvitedHeavy'])
         $('select[name=select-font-plain]').val(['Times'])
     }
@@ -152,6 +158,12 @@ $(document).ready(function(){
         let label = getOptionName(buckle)    
         $('#select-buckle').append('<input type="radio" name ="selected-buckle" value="' + buckle + '"/>' +
     label + '<div class="image-block" ><img src="buckle/' + buckle + '.png" alt ="' + buckle + '" height="50px"/></div>')
+    })   
+    
+    OPTIONS.ribbon.forEach(ribbon => {  
+        let label = getOptionName(ribbon)    
+        $('#select-ribbon').append('<input type="radio" name ="selected-ribbon" value="' + ribbon + '"/>' +
+    label + '<div class="image-block" ><img src="ribbon/' + ribbon + '.png" alt ="' + ribbon + '" height="50px"/></div>')
     })
 
     setDefaultValues()
@@ -229,6 +241,12 @@ $(document).ready(function(){
     $('input[name=selected-buckle]').on('change', () => {
         let buckle_selected = $('input[name=selected-buckle]:checked').val()
         $('#buckle').css('background-image', 'url(buckle/' + buckle_selected + '.png)')
+    })
+
+    // radio button clicked to change ribbon
+    $('input[name=selected-ribbon]').on('change', () => {
+        let ribbon_selected = $('input[name=selected-ribbon]:checked').val()
+        $('#ribbon').css('background-image', 'url(ribbon/' + ribbon_selected + '.png)')
     })
 
     // input that records the host name(s)
