@@ -267,9 +267,4 @@ $(document).ready(function(){
         $('#ribbon').css('background-image', 'url(assets/ribbon/' + ribbon_selected + '.png)')
     })
 
-    // input that records the location
-    $('#input-location').on('change', () => {
-            $('#location').text($('#input-location').val())
-    })
-
 });
