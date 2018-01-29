@@ -114,6 +114,7 @@ body {
 #date {
     margin: 0;
     padding: 5px 0 10px 0;
+    text-transform: uppercase;
 }
 
 #month {
