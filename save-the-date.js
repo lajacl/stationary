@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+    
+    let min_date
+    let max_date
     
     /**
      * @summary Font object constructor
@@ -74,15 +78,43 @@ $(document).ready(function(){
     /**
      * Other Functions
      */
+    
+    help = (message) => {
+        $('#help').text(message)
+        setTimeout(() => {
+            $('#help').text('')
+         }, 5000)
+    }
+    
+    checkDateValid = (date) => {        
+        let d = new Date(date + 'T00:00')
+        let date_part = date.split('-')
+        if (d.getMonth() == date_part[1] - 1 && d.getDate() == date_part[2]) {
+            return date
+        }
+        else {
+            // help('The date entered was not valid.')
+            console.log('New Year: ' + d)
+            let year = d.getFullYear()
+            let month = d.getMonth()+1
+            let day = d.getDate()
+            console.log(year + '-' + month +'-' + day)
+            return year + '-' + month +'-' + day
+        }
+    }
         
+    // set initial state of form
     setDefaultValues = () => {
         // get today, make date min 1 month ahead, make max 1 year ahead
         let today = new Date()
         let year = today.getFullYear()
         let month = today.getMonth()
         let day = today.getDate()
-        let min_date = year + '-' + month+2 + '-' + day
-        let max_date = year+1 + '-' + month+1 + '-' + day
+        min_date = year + '-' + month+2 + '-' + day
+        max_date = year+1 + '-' + month+1 + '-' + day
+
+        console.log('Min Date: ' + min_date)
+        console.log('Max Date: ' + max_date)
 
         // set default values for form options
         $('input[name=input-date]').attr('min', min_date)
@@ -173,14 +205,14 @@ $(document).ready(function(){
      * Handles user changes to form by updating view
      */
 
-    // input that records the host name(s)
+    // name(s) changed
     $('#input-names').on('change', () => {
         if($('#input-names').val() != '') {
             $('#names').text($('#input-names').val())
         }
     })
 
-    //change date
+    // date changed
     $('input[name=input-date]').on('change', () => {
         let selected_date = new Date($('input[name=input-date]').val() + 'T00:00')
         month_index = selected_date.getMonth()
@@ -190,7 +222,7 @@ $(document).ready(function(){
         $('#date').text(month + ' ' + day + ', ' + year)
     })
 
-    // change fancy font
+    // fancy font changed
     $('#select-font-fancy').on('change', () => {
         let font_selected = getSelectedFont('#select-font-fancy');
         let font_size = getFontMaxSize(font_selected);
@@ -198,7 +230,7 @@ $(document).ready(function(){
         $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
     }) 
 
-    // - button clicked to decrease font size
+    // - font size decreased
     $('#font-decrease-button').click(() => {
         let current_font_size = getFontSize();
 
@@ -206,15 +238,13 @@ $(document).ready(function(){
             $('#help').text('')
             current_font_size = current_font_size - 1 + 'px'
             $('#names, #header').css({'font-size':current_font_size})
-        } else {
-            $('#help').text('Minimum font size reached')
-            setTimeout(() => {
-                $('#help').text('')
-             }, 5000)
+        }
+        else {
+            help('Minimum font size reached')
         }
     })   
 
-    // + button clicked to increase font size
+    // + font size font size increased
     $('#font-increase-button').click(() => {
         let current_font_size = getFontSize();
         let max_font_size = getFontMaxSize(getSelectedFont('#select-font-fancy'))
@@ -223,45 +253,43 @@ $(document).ready(function(){
             $('#help').text('')
             current_font_size = current_font_size + 1 + 'px'
             $('#names, #header').css({'font-size':current_font_size})
-        } else {
-            $('#help').text('Maximum font size reached')
-            setTimeout(() => {
-                $('#help').text('')
-             }, 5000)
+        }
+        else {
+            help('Maximum font size reached')
         }
     })  
 
-    // change plain font
+    // plain font changed
     $('#select-font-plain').on('change', () => {
         let font_selected = getSelectedFont('#select-font-plain');        
         $('#date, #inner-text, #footer').css('font-family', font_selected)
     }) 
 
-    // radio button clicked to change text paper
+    // text paper changed
     $('input[name=selected-text-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-text-paper]:checked').val()
         $('#text-paper').css('background-image', 'url(assets/text-paper/' + paper_selected + '.jpg)')
     })
 
-    // radio button clicked to change cardstock paper
+    // cardstock paper changed
     $('input[name=selected-cardstock]').on('change', () => {
         let paper_selected = $('input[name=selected-cardstock]:checked').val()
         $('#card').css('background-image', 'url(assets/cardstock-paper/' + paper_selected + '.jpg)')
     })
 
-    // radio button clicked to change accent paper
+    // accent paper changed
     $('input[name=selected-accent-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-accent-paper]:checked').val()
         $('#accent-paper').css('background-image', 'url(assets/accent-paper/' + paper_selected + '.jpg)')
     })
 
-    // radio button clicked to change buckle embellishment
+    // buckle changed
     $('input[name=selected-buckle]').on('change', () => {
         let buckle_selected = $('input[name=selected-buckle]:checked').val()
         $('#buckle').css('background-image', 'url(assets/buckle/' + buckle_selected + '.png)')
     })
 
-    // radio button clicked to change ribbon
+    // ribbon changed
     $('input[name=selected-ribbon]').on('change', () => {
         let ribbon_selected = $('input[name=selected-ribbon]:checked').val()
         $('#ribbon').css('background-image', 'url(assets/ribbon/' + ribbon_selected + '.png)')
