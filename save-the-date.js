@@ -123,7 +123,7 @@ $(document).ready(function(){
         $('input:radio[name=selected-cardstock]').val(['silver_metallic_light'])
         $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
         $('input:radio[name=selected-buckle]').val(['heart'])
-        $('input:radio[name=selected-ribbon]').val(['silver'])
+        $('input:radio[name=selected-ribbon]').val(['gray'])
         $('select[name=select-font-fancy]').val(['youreInvitedHeavy'])
         $('select[name=select-font-plain]').val(['Times'])
     }
