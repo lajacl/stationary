@@ -51,7 +51,7 @@ $(document).ready(function(){
             'white_felt',
             'warm_white_felt'
         ],
-        cardstock: [
+        cardstock_paper: [
             'silver_metallic_light',
             'silver_metallic_dark'
         ],
@@ -76,8 +76,38 @@ $(document).ready(function(){
 
     
     /**
-     * Other Functions
-     */
+     * Functions
+     */        
+    // set initial state of form
+    setDefaultValues = () => {
+        // get today, make date min 1 month ahead, make max 1 year ahead
+        let today = new Date()
+        let year = today.getFullYear()
+        let month = today.getMonth()
+        let day = today.getDate()
+        min_date = year + '-' + month+2 + '-' + day
+        max_date = year+1 + '-' + month+1 + '-' + day
+
+        console.log('Min Date: ' + min_date)
+        console.log('Max Date: ' + max_date)
+
+        // set default values for form options
+        $('input[name=input-date]').attr('min', min_date)
+        $('input[name=input-date]').attr('max', max_date)
+        $('input:radio[name=selected-text-paper]').val(['warm_white_felt'])
+        $('input:radio[name=selected-cardstock-paper]').val(['silver_metallic_light'])
+        $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
+        $('input:radio[name=selected-buckle]').val(['heart'])
+        $('input:radio[name=selected-ribbon]').val(['gray'])
+        $('select[name=select-font-fancy]').val(['youreInvitedHeavy'])
+        $('select[name=select-font-plain]').val(['Times'])
+    }
+
+    makeOption = (option, folder, file_type) => {        
+        let label = getOptionName(option)
+        $('#select-' + folder).append('<input type="radio" name="selected-' + folder + '"value="' + option + '"/>' +
+        label + '<div class="image-block" style="background-image: url(assets/' + folder + '/' + option + '.' + file_type + '")></div>')
+    }
     
     help = (message) => {
         $('#help').text(message)
@@ -101,31 +131,6 @@ $(document).ready(function(){
             console.log(year + '-' + month +'-' + day)
             return year + '-' + month +'-' + day
         }
-    }
-        
-    // set initial state of form
-    setDefaultValues = () => {
-        // get today, make date min 1 month ahead, make max 1 year ahead
-        let today = new Date()
-        let year = today.getFullYear()
-        let month = today.getMonth()
-        let day = today.getDate()
-        min_date = year + '-' + month+2 + '-' + day
-        max_date = year+1 + '-' + month+1 + '-' + day
-
-        console.log('Min Date: ' + min_date)
-        console.log('Max Date: ' + max_date)
-
-        // set default values for form options
-        $('input[name=input-date]').attr('min', min_date)
-        $('input[name=input-date]').attr('max', max_date)
-        $('input:radio[name=selected-text-paper]').val(['warm_white_felt'])
-        $('input:radio[name=selected-cardstock]').val(['silver_metallic_light'])
-        $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
-        $('input:radio[name=selected-buckle]').val(['heart'])
-        $('input:radio[name=selected-ribbon]').val(['gray'])
-        $('select[name=select-font-fancy]').val(['youreInvitedHeavy'])
-        $('select[name=select-font-plain]').val(['Times'])
     }
 
     getSelectedFont = (source) => {    
@@ -169,33 +174,23 @@ $(document).ready(function(){
     })
     
     OPTIONS.text_paper.forEach(paper => { 
-        let label = getOptionName(paper)
-        $('#select-text-paper').append('<input type="radio" name="selected-text-paper" value="' + paper + '"/>' +
-        label + '<div class="image-block" ><img src="assets/text-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+        makeOption(paper, "text-paper", "jpg")
     })
     
-    OPTIONS.cardstock.forEach(paper => {   
-        let label = getOptionName(paper)   
-        $('#select-cardstock').append('<input type="radio" name="selected-cardstock" value="' + paper + '"/>' +
-        label + '<div class="image-block" ><img src="assets/cardstock-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+    OPTIONS.cardstock_paper.forEach(paper => {           
+        makeOption(paper, "cardstock-paper", "jpg")
     })
     
     OPTIONS.accent_paper.forEach(paper => {  
-        let label = getOptionName(paper)    
-        $('#select-accent-paper').append('<input type="radio" name="selected-accent-paper" value="' + paper + '"/>' +
-        label + ' <div class="image-block" ><img src="assets/accent-paper/' + paper + '.jpg" alt ="' + paper + '" class = "sample-image"/></div>')
+        makeOption(paper, "accent-paper", "jpg")
     })    
     
     OPTIONS.buckle.forEach(buckle => {  
-        let label = getOptionName(buckle)    
-        $('#select-buckle').append('<input type="radio" name ="selected-buckle" value="' + buckle + '"/>' +
-    label + '<div class="image-block" ><img src="assets/buckle/' + buckle + '.png" alt ="' + buckle + '" class = "sample-image"/></div>')
+        makeOption(buckle, "buckle", "png")
     })   
     
     OPTIONS.ribbon.forEach(ribbon => {  
-        let label = getOptionName(ribbon)    
-        $('#select-ribbon').append('<input type="radio" name ="selected-ribbon" value="' + ribbon + '"/>' +
-    label + '<div class="image-block" ><img src="assets/ribbon/' + ribbon + '.png" alt ="' + ribbon + '" class = "sample-image"/></div>')
+        makeOption(ribbon, "ribbon", "png")
     })
 
     setDefaultValues()
@@ -272,8 +267,8 @@ $(document).ready(function(){
     })
 
     // cardstock paper changed
-    $('input[name=selected-cardstock]').on('change', () => {
-        let paper_selected = $('input[name=selected-cardstock]:checked').val()
+    $('input[name=selected-cardstock-paper]').on('change', () => {
+        let paper_selected = $('input[name=selected-cardstock-paper]:checked').val()
         $('#card').css('background-image', 'url(assets/cardstock-paper/' + paper_selected + '.jpg)')
     })
 
