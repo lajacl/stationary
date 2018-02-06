@@ -174,15 +174,15 @@ $(document).ready(function(){
     })
     
     OPTIONS.text_paper.forEach(paper => { 
-        makeOption(paper, "text-paper", "jpg")
+        makeOption(paper, "text_paper", "jpg")
     })
     
     OPTIONS.cardstock_paper.forEach(paper => {           
-        makeOption(paper, "cardstock-paper", "jpg")
+        makeOption(paper, "cardstock_paper", "jpg")
     })
     
     OPTIONS.accent_paper.forEach(paper => {  
-        makeOption(paper, "accent-paper", "jpg")
+        makeOption(paper, "accent_paper", "jpg")
     })    
     
     OPTIONS.buckle.forEach(buckle => {  
@@ -263,19 +263,19 @@ $(document).ready(function(){
     // text paper changed
     $('input[name=selected-text-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-text-paper]:checked').val()
-        $('#text-paper').css('background-image', 'url(assets/text-paper/' + paper_selected + '.jpg)')
+        $('#text-paper').css('background-image', 'url(assets/text_paper/' + paper_selected + '.jpg)')
     })
 
     // cardstock paper changed
     $('input[name=selected-cardstock-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-cardstock-paper]:checked').val()
-        $('#card').css('background-image', 'url(assets/cardstock-paper/' + paper_selected + '.jpg)')
+        $('#card').css('background-image', 'url(assets/cardstock_paper/' + paper_selected + '.jpg)')
     })
 
     // accent paper changed
     $('input[name=selected-accent-paper]').on('change', () => {
         let paper_selected = $('input[name=selected-accent-paper]:checked').val()
-        $('#accent-paper').css('background-image', 'url(assets/accent-paper/' + paper_selected + '.jpg)')
+        $('#accent-paper').css('background-image', 'url(assets/accent_paper/' + paper_selected + '.jpg)')
     })
 
     // buckle changed

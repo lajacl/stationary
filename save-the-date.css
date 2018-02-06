@@ -57,7 +57,7 @@ body {
 }
 
 #card { 
-    background-image: url("assets/cardstock-paper/silver_metallic_light.jpg");
+    background-image: url("assets/cardstock_paper/silver_metallic_light.jpg");
     height: 550px;
     width: 425px;
     box-shadow: 10px 10px 5px #888888;
@@ -67,7 +67,7 @@ body {
 }
 
 #text-paper {
-    background: url("assets/text-paper/warm_white_felt.jpg");
+    background: url("assets/text_paper/warm_white_felt.jpg");
     margin: 25px;
     width: 375px;
     height: 500px;
@@ -75,7 +75,7 @@ body {
 
 #accent-paper {
     height: 100px;
-    background: url("assets/accent-paper/silver_swirl.jpg") center;
+    background: url("assets/accent_paper/silver_swirl.jpg") center;
 
 }
 
