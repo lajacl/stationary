@@ -44,34 +44,49 @@ $(document).ready(function(){
 
     // Create an array of paper file names
     const OPTIONS = {
-        text_paper: [
+        text_paper: {
+            file_type: "jpg",
+            choices: [
             'white_linen',
             'cream_linen',
             'gray_linen',
             'white_felt',
             'warm_white_felt'
-        ],
-        cardstock_paper: [
+            ]
+        },
+        cardstock_paper: {
+            file_type: "jpg",
+            choices: [
             'silver_metallic_light',
             'silver_metallic_dark'
-        ],
-        accent_paper: [
+            ]
+        },
+        accent_paper: {
+            file_type: "jpg",
+            choices: [
             'silver_rose',
             'silver_swirl',
             'silver_pebble'
-        ],
-        buckle: [
+            ]
+        },
+        buckle: {
+            file_type: "png",
+            choices: [
             'circle',
             'diamond',
             'heart',
             'square'
-        ],
-        ribbon: [
+            ]
+        },
+        ribbon: {
+            file_type: "png",
+            choices: [
             'white',
             'silver',
             'gray',
             'black'
-        ]
+            ]
+        },
     }
 
     
@@ -94,18 +109,18 @@ $(document).ready(function(){
         // set default values for form options
         $('input[name=input-date]').attr('min', min_date)
         $('input[name=input-date]').attr('max', max_date)
-        $('input:radio[name=selected-text-paper]').val(['warm_white_felt'])
-        $('input:radio[name=selected-cardstock-paper]').val(['silver_metallic_light'])
-        $('input:radio[name=selected-accent-paper]').val(['silver_swirl'])
-        $('input:radio[name=selected-buckle]').val(['heart'])
-        $('input:radio[name=selected-ribbon]').val(['gray'])
-        $('select[name=select-font-fancy]').val(['youreInvitedHeavy'])
-        $('select[name=select-font-plain]').val(['Times'])
+        $('input:radio[name=selected_text_paper]').val(['warm_white_felt'])
+        $('input:radio[name=selected_cardstock_paper]').val(['silver_metallic_light'])
+        $('input:radio[name=selected_accent_paper]').val(['silver_swirl'])
+        $('input:radio[name=selected_buckle]').val(['heart'])
+        $('input:radio[name=selected_ribbon]').val(['gray'])
+        $('select[name=select_font-fancy]').val(['youreInvitedHeavy'])
+        $('select[name=select_font-plain]').val(['Times'])
     }
 
-    makeOption = (option, folder, file_type) => {        
+    makeOption = (option, folder, file_type) => {    
         let label = getOptionName(option)
-        $('#select-' + folder).append('<input type="radio" name="selected-' + folder + '"value="' + option + '"/>' +
+        $('#select_' + folder).append('<input type="radio" name="selected_' + folder + '"value="' + option + '"/>' +
         label + '<div class="image-block" style="background-image: url(assets/' + folder + '/' + option + '.' + file_type + '")></div>')
     }
     
@@ -165,33 +180,21 @@ $(document).ready(function(){
      */
     FONTS.fancy.forEach(font => {      
         let label = getOptionName(font.name)
-        $('#select-font-fancy').append('<option value="' + font.name + '">' + label + '</option>')
+        $('#select_font-fancy').append('<option value="' + font.name + '">' + label + '</option>')
     })
 
     FONTS.plain.forEach(font => {      
         let label = getOptionName(font.name)
-        $('#select-font-plain').append('<option value="' + font.name + '">'+ label + '</option>')
+        $('#select_font-plain').append('<option value="' + font.name + '">'+ label + '</option>')
     })
-    
-    OPTIONS.text_paper.forEach(paper => { 
-        makeOption(paper, "text_paper", "jpg")
-    })
-    
-    OPTIONS.cardstock_paper.forEach(paper => {           
-        makeOption(paper, "cardstock_paper", "jpg")
-    })
-    
-    OPTIONS.accent_paper.forEach(paper => {  
-        makeOption(paper, "accent_paper", "jpg")
-    })    
-    
-    OPTIONS.buckle.forEach(buckle => {  
-        makeOption(buckle, "buckle", "png")
-    })   
-    
-    OPTIONS.ribbon.forEach(ribbon => {  
-        makeOption(ribbon, "ribbon", "png")
-    })
+
+    for (let key in OPTIONS) {
+        if (OPTIONS.hasOwnProperty(key)) {
+            OPTIONS[key].choices.forEach(option => { 
+                makeOption(option, key, OPTIONS[key].file_type)
+            })
+        }
+    }
 
     setDefaultValues()
     
@@ -218,8 +221,8 @@ $(document).ready(function(){
     })
 
     // fancy font changed
-    $('#select-font-fancy').on('change', () => {
-        let font_selected = getSelectedFont('#select-font-fancy');
+    $('#select_font-fancy').on('change', () => {
+        let font_selected = getSelectedFont('#select_font-fancy');
         let font_size = getFontMaxSize(font_selected);
 
         $('#names, #header').css({'font-family': font_selected, 'font-size': font_size})
@@ -242,7 +245,7 @@ $(document).ready(function(){
     // + font size font size increased
     $('#font-increase-button').click(() => {
         let current_font_size = getFontSize();
-        let max_font_size = getFontMaxSize(getSelectedFont('#select-font-fancy'))
+        let max_font_size = getFontMaxSize(getSelectedFont('#select_font-fancy'))
         
         if (current_font_size < max_font_size) {
             $('#help').text('')
@@ -255,38 +258,38 @@ $(document).ready(function(){
     })  
 
     // plain font changed
-    $('#select-font-plain').on('change', () => {
-        let font_selected = getSelectedFont('#select-font-plain');        
+    $('#select_font-plain').on('change', () => {
+        let font_selected = getSelectedFont('#select_font-plain');        
         $('#date, #inner-text, #footer').css('font-family', font_selected)
     }) 
 
     // text paper changed
-    $('input[name=selected-text-paper]').on('change', () => {
-        let paper_selected = $('input[name=selected-text-paper]:checked').val()
-        $('#text-paper').css('background-image', 'url(assets/text_paper/' + paper_selected + '.jpg)')
+    $('input[name=selected_text_paper]').on('change', () => {
+        let paper_selected = $('input[name=selected_text_paper]:checked').val()
+        $('#text_paper').css('background-image', 'url(assets/text_paper/' + paper_selected + '.jpg)')
     })
 
     // cardstock paper changed
-    $('input[name=selected-cardstock-paper]').on('change', () => {
-        let paper_selected = $('input[name=selected-cardstock-paper]:checked').val()
+    $('input[name=selected_cardstock_paper]').on('change', () => {
+        let paper_selected = $('input[name=selected_cardstock_paper]:checked').val()
         $('#card').css('background-image', 'url(assets/cardstock_paper/' + paper_selected + '.jpg)')
     })
 
     // accent paper changed
-    $('input[name=selected-accent-paper]').on('change', () => {
-        let paper_selected = $('input[name=selected-accent-paper]:checked').val()
-        $('#accent-paper').css('background-image', 'url(assets/accent_paper/' + paper_selected + '.jpg)')
+    $('input[name=selected_accent_paper]').on('change', () => {
+        let paper_selected = $('input[name=selected_accent_paper]:checked').val()
+        $('#accent_paper').css('background-image', 'url(assets/accent_paper/' + paper_selected + '.jpg)')
     })
 
     // buckle changed
-    $('input[name=selected-buckle]').on('change', () => {
-        let buckle_selected = $('input[name=selected-buckle]:checked').val()
+    $('input[name=selected_buckle]').on('change', () => {
+        let buckle_selected = $('input[name=selected_buckle]:checked').val()
         $('#buckle').css('background-image', 'url(assets/buckle/' + buckle_selected + '.png)')
     })
 
     // ribbon changed
-    $('input[name=selected-ribbon]').on('change', () => {
-        let ribbon_selected = $('input[name=selected-ribbon]:checked').val()
+    $('input[name=selected_ribbon]').on('change', () => {
+        let ribbon_selected = $('input[name=selected_ribbon]:checked').val()
         $('#ribbon').css('background-image', 'url(assets/ribbon/' + ribbon_selected + '.png)')
     })
 

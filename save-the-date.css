@@ -66,14 +66,14 @@ body {
     margin-left: 25px;
 }
 
-#text-paper {
+#text_paper {
     background: url("assets/text_paper/warm_white_felt.jpg");
     margin: 25px;
     width: 375px;
     height: 500px;
 }
 
-#accent-paper {
+#accent_paper {
     height: 100px;
     background: url("assets/accent_paper/silver_swirl.jpg") center;
 
