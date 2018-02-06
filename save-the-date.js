@@ -93,6 +93,14 @@ $(document).ready(function(){
     /**
      * Functions
      */        
+
+    // put date in mm-dd-yyyy format
+    formatDate = (date) => {
+        let date_array = date.split('-')
+        // console.log(date_array)
+        return (date_array[1] + '-' + date_array[2] + '-' + date_array[0])
+    }
+
     // set initial state of form
     setDefaultValues = () => {
         // get today, make date min 1 month ahead, make max 1 year ahead
@@ -100,8 +108,8 @@ $(document).ready(function(){
         let year = today.getFullYear()
         let month = today.getMonth()
         let day = today.getDate()
-        min_date = year + '-' + month+2 + '-' + day
-        max_date = year+1 + '-' + month+1 + '-' + day
+        min_date = year + '-' + (month+3) + '-' + day
+        max_date = (year+1) + '-' + (month+1) + '-' + day
 
         console.log('Min Date: ' + min_date)
         console.log('Max Date: ' + max_date)
@@ -109,6 +117,7 @@ $(document).ready(function(){
         // set default values for form options
         $('input[name=input-date]').attr('min', min_date)
         $('input[name=input-date]').attr('max', max_date)
+        $('#valid-dates').text(' between ' + formatDate(min_date) + ' and ' + formatDate(max_date))
         $('input:radio[name=selected_text_paper]').val(['warm_white_felt'])
         $('input:radio[name=selected_cardstock_paper]').val(['silver_metallic_light'])
         $('input:radio[name=selected_accent_paper]').val(['silver_swirl'])
